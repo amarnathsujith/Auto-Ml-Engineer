@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AutoML Studio</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Inter & Outfit for modern aesthetic -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@500;700;800;900&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        outfit: ['Outfit', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            dark: '#3b0764',
+                            purple: '#581c87',
+                            magenta: '#6b21a8',
+                            lightBg: '#f3f4f6',
+                        }
+                    },
+                    boxShadow: {
+                        'pill': '0 10px 25px -5px rgba(88, 28, 135, 0.4), 0 8px 10px -6px rgba(88, 28, 135, 0.4)',
+                        'layered': '4px 4px 0px #3b0764, 8px 8px 0px rgba(88, 28, 135, 0.3)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom styles for 3D text shadow and marquee */
+        .layered-title {
+            font-family: 'Outfit', sans-serif;
+            color: #581c87;
+            text-shadow: 
+                2px 2px 0px #3b0764,
+                4px 4px 0px #4c1d95,
+                6px 6px 10px rgba(0,0,0,0.15);
+        }
+        
+        @keyframes marquee {
+            0% { transform: translateX(0%); }
+            100% { transform: translateX(-50%); }
+        }
+        
+        .animate-marquee {
+            display: flex;
+            width: 200%;
+            animation: marquee 20s linear infinite;
+        }
+
+        .animate-marquee:hover {
+            animation-play-state: paused;
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-b from-gray-100 via-gray-50 to-gray-200 min-h-screen font-sans text-gray-800 overflow-x-hidden flex flex-col justify-between selection:bg-purple-500 selection:text-white">
+
+    <!-- Floating Navigation Bar -->
+    <header class="w-full pt-6 px-4 z-50 fixed top-0 flex justify-center">
+        <nav class="bg-gradient-to-r from-purple-950 via-purple-900 to-indigo-950 text-white rounded-full px-6 py-3.5 shadow-pill flex items-center justify-between space-x-2 md:space-x-8 max-w-4xl w-full border border-purple-800/50 backdrop-blur-md">
+            <a href="#home" class="hover:text-purple-300 transition-colors font-medium text-xs md:text-sm tracking-wide">Home</a>
+            <a href="#about" class="hover:text-purple-300 transition-colors font-medium text-xs md:text-sm tracking-wide">About</a>
+            <a href="#service" class="hover:text-purple-300 transition-colors font-medium text-xs md:text-sm tracking-wide">Service</a>
+            
+            <!-- Central circular logo placeholder -->
+            <div class="mx-2 md:mx-4 flex-shrink-0">
+                <div class="w-8 h-8 md:w-10 md:h-10 rounded-full bg-white shadow-inner flex items-center justify-center transform hover:scale-105 transition-transform cursor-pointer">
+                    <div class="w-3 h-3 md:w-4 md:h-4 rounded-full bg-purple-900 animate-pulse"></div>
+                </div>
+            </div>
+
+            <a href="#resume" class="hover:text-purple-300 transition-colors font-medium text-xs md:text-sm tracking-wide">Resume</a>
+            <a href="#project" class="hover:text-purple-300 transition-colors font-medium text-xs md:text-sm tracking-wide">Project</a>
+            <a href="#contact" class="hover:text-purple-300 transition-colors font-medium text-xs md:text-sm tracking-wide">Contact</a>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <main class="flex-grow flex flex-col items-center justify-start pt-32 md:pt-40 relative px-4 w-full">
+        <!-- Main Bold Title -->
+        <div class="text-center z-10 max-w-5xl mx-auto px-2">
+            <h1 class="layered-title text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-extrabold tracking-tight uppercase select-none">
+                AutoML Studio
+            </h1>
+        </div>
+
+        <!-- Lower Curved Section / Card -->
+        <div class="w-full mt-12 md:mt-16 relative flex flex-col items-center">
+            <!-- Large Deep Purple Arch Container -->
+            <div class="w-full max-w-6xl bg-purple-950 rounded-t-[100%] md:rounded-t-[180px] pt-20 md:pt-28 pb-12 px-6 flex flex-col items-center text-white shadow-2xl relative overflow-hidden border-t-4 border-purple-800">
+                
+                <!-- Inner glow background effect -->
+                <div class="absolute inset-0 bg-gradient-to-t from-purple-900/50 via-transparent to-transparent pointer-events-none"></div>
+
+                <!-- Callout Title -->
+                <h2 class="font-outfit text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-center mb-6 z-10">
+                    Create your own AI
+                </h2>
+
+                <!-- Glassmorphism Action Button -->
+                <div class="z-10 mb-16">
+                    <button onclick="handleCreateClick()" class="group relative inline-flex items-center px-8 py-3.5 rounded-full bg-white/20 hover:bg-white/30 text-white font-medium text-base tracking-wide border border-white/30 backdrop-blur-md shadow-lg transition-all duration-300 transform hover:-translate-y-0.5 active:translate-y-0">
+                        <span>Create Now</span>
+                        <svg class="w-4 h-4 ml-2 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                        </svg>
+                    </button>
+                </div>
+
+                <!-- Marquee / Ticker Strip -->
+                <div class="w-full bg-white text-gray-900 py-3 md:py-4 overflow-hidden shadow-inner relative">
+                    <div class="animate-marquee whitespace-nowrap flex items-center font-outfit font-bold text-sm md:text-xl tracking-wider uppercase">
+                        <span class="mx-6">App Design</span>
+                        <span class="text-purple-600 mx-2">✦</span>
+                        <span class="mx-6">Dashboard</span>
+                        <span class="text-purple-600 mx-2">✦</span>
+                        <span class="mx-6">Wireframe</span>
+                        <span class="text-purple-600 mx-2">✦</span>
+                        <span class="mx-6">UI / UX</span>
+                        <span class="text-purple-600 mx-2">✦</span>
+                        <span class="mx-6">Machine Learning</span>
+                        <span class="text-purple-600 mx-2">✦</span>
+                        <span class="mx-6">Neural Networks</span>
+                        <span class="text-purple-600 mx-2">✦</span>
+                        <!-- Repeated for seamless loop -->
+                        <span class="mx-6">App Design</span>
+                        <span class="text-purple-600 mx-2">✦</span>
+                        <span class="mx-6">Dashboard</span>
+                        <span class="text-purple-600 mx-2">✦</span>
+                        <span class="mx-6">Wireframe</span>
+                        <span class="text-purple-600 mx-2">✦</span>
+                        <span class="mx-6">UI / UX</span>
+                        <span class="text-purple-600 mx-2">✦</span>
+                        <span class="mx-6">Machine Learning</span>
+                        <span class="text-purple-600 mx-2">✦</span>
+                        <span class="mx-6">Neural Networks</span>
+                        <span class="text-purple-600 mx-2">✦</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <!-- Custom Modal for Alerts (No native alert() usage) -->
+    <div id="messageModal" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl max-w-md w-full p-6 shadow-2xl transform transition-all text-center">
+            <div class="w-12 h-12 bg-purple-100 text-purple-700 rounded-full flex items-center justify-center mx-auto mb-4 text-xl">
+                ✨
+            </div>
+            <h3 class="font-outfit text-xl font-bold text-gray-900 mb-2">Welcome to AutoML Studio</h3>
+            <p id="modalText" class="text-gray-600 text-sm mb-6">You clicked 'Create Now'! Get ready to build your custom AI workflows seamlessly.</p>
+            <button onclick="closeModal()" class="w-full py-3 bg-purple-900 hover:bg-purple-800 text-white rounded-xl font-medium transition-colors shadow-md">
+                Got it
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // Interactive functions
+        function handleCreateClick() {
+            const modal = document.getElementById('messageModal');
+            modal.classList.remove('hidden');
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('messageModal');
+            modal.classList.add('hidden');
+        }
+
+        // Close modal on outside click
+        window.onclick = function(event) {
+            const modal = document.getElementById('messageModal');
+            if (event.target === modal) {
+                closeModal();
+            }
+        }
+    </script>
+</body>
+</html>
